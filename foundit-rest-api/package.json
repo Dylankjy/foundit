@@ -17,8 +17,8 @@
     "nodejs",
     "boilerplate"
   ],
-  "author": "Harbourfront",
-  "license": "MPL-2.0",
+  "author": "Dylan Kok <me@dylankjy.com>",
+  "license": "UNLICENSED",
   "bugs": {
     "url": "https://github.com/harbourfront/template-express-rest-api/issues"
   },
