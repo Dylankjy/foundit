@@ -1,11 +1,18 @@
 const express = require('express')
 const router = express.Router()
 
+const package = require('../../../package.json')
+
 router.get('/', (req, res) => {
-    return res.json('Hello World!')
+    // #swagger.tags = ['Index']
+    return res.json({
+        'service': 'Foundit REST API',
+        'owner': package.author
+    })
 })
 
 router.get('*', (req, res) => {
+    // #swagger.ignore = true
     return res.json({
         'code': 404,
         'name': 'Not Found',

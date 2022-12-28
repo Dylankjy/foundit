@@ -20,10 +20,10 @@ const config = {
 
     // API Constants
     constants: {
-        SERVICE_NAME: 'Harbourfront Node REST API Template',
-        SERVICE_DESCRIPTION: 'You can change this description in /app/config/index.js:config.constants.SERVICE_DESCRIPTION',
+        SERVICE_NAME: 'Foundit REST API',
+        SERVICE_DESCRIPTION: 'This is the REST API backend for Foundit.',
         API_VERSION: '1.0',
-        API_BASE_URL: '/v1/api'
+        API_BASE_URL: '/api'
     }
 }
 

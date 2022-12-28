@@ -29,7 +29,7 @@ const webserver = () => {
     })
 
     // Swagger API Docs
-    app.use(`/v1/docs`, swaggerUi.serve, swaggerUi.setup(swaggerFile))
+    app.use(`/docs`, swaggerUi.serve, swaggerUi.setup(swaggerFile))
 }
 
 webserver()
