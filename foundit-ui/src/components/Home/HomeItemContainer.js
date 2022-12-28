@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import testdataService from "../../services/testdata.service"
+import dataService from "../../services/data.service"
 import HomeItemEntry from "./HomeItemEntry"
 
 const HomeItemContainer = () => {
@@ -7,12 +7,11 @@ const HomeItemContainer = () => {
     const [items, setItems] = useState([])
 
     const fetchItems = async () => {
-        const response = await testdataService.getItems()
-        setItems(response.data)
+        const response = await dataService.get("items")
+        setItems(response.data.items)
     }
 
     useEffect(() => {
-        console.log(items)
         fetchItems()
     }, [])
 
@@ -21,7 +20,7 @@ const HomeItemContainer = () => {
             <div className="container">
                 <div className="columns is-multiline">
                     {items.map((item, i) => {
-                        return <HomeItemEntry {...item} />
+                        return <HomeItemEntry key={item._id} {...item} />
                     })}
                 </div>
             </div>

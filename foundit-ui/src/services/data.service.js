@@ -1,7 +1,7 @@
 import axios from "axios";
 import constants from "../constants";
 
-axios.defaults.withCredentials = true
+axios.defaults.withCredentials = false
 
 class DataSerivce {
     get = async (endpoint, data) => {

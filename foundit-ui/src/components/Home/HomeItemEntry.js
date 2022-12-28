@@ -16,7 +16,7 @@ const HomeItemEntry = (props) => {
                         <div className="media-content">
                             <p className="title is-4">{name}</p>
                             {/* <p className="subtitle is-6">{itemDesc}</p> */}
-                            <span class="tag is-dark">
+                            <span className="tag is-dark">
                                 {category}
                             </span>
                         </div>
