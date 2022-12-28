@@ -12,8 +12,8 @@ const config = {
     // Services and databases
     services: {
         MONGO: {
-            HOST: process.env.MONGO_HOST || 'mongodb://localhost:27017',
-            DATABASE: process.env.MONGO_DATABASE || 'test',
+            HOST: process.env.MONGO_HOST || 'mongodb://127.0.0.1:27017',
+            DATABASE: process.env.MONGO_DATABASE || 'foundit',
             OPTIONS: process.env.MONGO_OPTIONS || ''
         }
     },

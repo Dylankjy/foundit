@@ -4,6 +4,7 @@ const env = require('./app/config')
 // Express
 const express = require('express')
 const app = express()
+app.use(express.json())
 
 // Rate limiting
 const rateLimit = require('express-rate-limit')
@@ -16,6 +17,9 @@ app.use(rateLimit({
 // Swagger
 const swaggerUi = require('swagger-ui-express')
 const swaggerFile = require('./app/api/swagger.json')
+
+// Database
+require('./app/utils/database')
 
 // Routes
 require('./app/api')(app)
