@@ -4,7 +4,8 @@ const router = express.Router()
 const package = require('../../../package.json')
 
 router.get('/', (req, res) => {
-    // #swagger.tags = ['Index']
+    // #swagger.tags = ['API Information']
+    // #swagger.description = 'Information about the API'
     return res.json({
         'service': 'Foundit REST API',
         'owner': package.author
