@@ -8,6 +8,7 @@ const config = {
     HOSTNAME: process.env.HOSTNAME || 'localhost',
     PORT: process.env.PORT || 5000,
     MAX_REQUESTS_PER_MINUTE: process.env.MAX_REQUESTS_PER_MINUTE || 100,
+    CORS_ORIGIN: process.env.CORS_ORIGIN || 'http://localhost:3000',
 
     // Services and databases
     services: {

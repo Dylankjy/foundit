@@ -21,6 +21,12 @@ const swaggerFile = require('./app/api/swagger.json')
 // Database
 require('./app/utils/database')
 
+// Cors
+const cors = require('cors')
+app.use(cors({
+    origin: env.CORS_ORIGIN
+}))
+
 // Routes
 require('./app/api')(app)
 
