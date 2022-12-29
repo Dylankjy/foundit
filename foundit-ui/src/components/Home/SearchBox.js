@@ -17,7 +17,7 @@ const SearchBox = (props) => {
         }, 1200)
 
         return () => clearTimeout(delayDebounceFn)
-    }, [searchQuery, searchSetter])
+    }, [loadingSetter, searchQuery, searchSetter])
 
     return (
         <section className="section">
