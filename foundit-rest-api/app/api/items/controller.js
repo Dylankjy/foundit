@@ -28,7 +28,7 @@ router.get('/', async (req, res) => {
     return res.json({
         items,
         total: items.length,
-        page: (items.length > 0) ? parseInt(page) : 0
+        page: ((items.length > 0) ? parseInt(page) : 0) || 0
     })
 })
 
