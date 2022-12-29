@@ -8,7 +8,8 @@ router.get('/', async (req, res) => {
     // #swagger.description = 'Get all items'
 
     // #swagger.parameters['page'] = { description: 'Page number' }
-    const { page } = req.query
+    // #swagger.parameters['search'] = { description: 'Search query' }
+    const { page, search } = req.query
 
     const itemsPerPage = 10
 
@@ -21,7 +22,7 @@ router.get('/', async (req, res) => {
     }
 
     // Get items and paginate
-    const items = await Item.find({})
+    const items = await Item.find(search ? { name: { $regex: search, $options: 'i' } } : {})
         .skip(page * itemsPerPage)
         .limit(itemsPerPage)
 

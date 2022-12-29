@@ -1,0 +1,9 @@
+.loading-fade {
+    transition: opacity 0.25s ease;
+    opacity: 0.4;
+}
+
+@keyframes fadein {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}

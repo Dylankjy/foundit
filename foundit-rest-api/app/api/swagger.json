@@ -23,6 +23,12 @@
             "description": "Page number",
             "in": "query",
             "type": "string"
+          },
+          {
+            "name": "search",
+            "description": "Search query",
+            "in": "query",
+            "type": "string"
           }
         ],
         "responses": {
