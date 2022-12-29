@@ -7,12 +7,12 @@
         {
             "type": "node",
             "request": "launch",
-            "name": "Debug and watch application",
+            "name": "Debug REST API",
             "skipFiles": [
                 "<node_internals>/**"
             ],
             "restart": true,
-            "program": "${workspaceFolder}\\app.js",
+            "program": "${workspaceFolder}/foundit-rest-api/app.js",
             "runtimeExecutable": "nodemon",
             "args": ["--inspect"]
         }
