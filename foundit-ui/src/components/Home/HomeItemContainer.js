@@ -11,7 +11,6 @@ const HomeItemContainer = () => {
 
     const fetchItems = async () => {
         const response = await dataService.get(`items/?search=${searchQuery}`)
-        console.log(response.data.items)
         setItems(response.data.items)
     }
 
