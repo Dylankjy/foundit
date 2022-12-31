@@ -1,0 +1,13 @@
+{
+  "name": "foundit",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Dylankjy/foundit.git"
+  },
+  "author": "",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/Dylankjy/foundit/issues"
+  },
+  "homepage": "https://github.com/Dylankjy/foundit#readme"
+}
