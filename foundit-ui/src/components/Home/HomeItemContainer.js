@@ -21,7 +21,11 @@ const HomeItemContainer = () => {
 
     return (
         <>
-            <SearchBox searchSetter={setSearchQuery} loadingSetter={setLoading} />
+            <section className="section">
+                <div className="container">
+                    <SearchBox searchSetter={setSearchQuery} loadingSetter={setLoading} />
+                </div>
+            </section>
             <section className="section">
                 <div className="container">
                     <div className={(loading) ? 'columns is-multiline loading-fade' : 'columns is-multiline'}>

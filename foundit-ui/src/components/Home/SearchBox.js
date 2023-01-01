@@ -20,8 +20,8 @@ const SearchBox = (props) => {
     }, [loadingSetter, searchQuery, searchSetter])
 
     return (
-        <section className="section">
-            <div className="container">
+        // <section className="section">
+        //     <div className="container">
                 <div className="field has-addons">
                     <p className="control is-expanded">
                         <input className="input" type="text" autoComplete="off" placeholder="Search for an item" name="query" onKeyUp={(e) => setSearchQuery(e.target.value)} />
@@ -32,8 +32,8 @@ const SearchBox = (props) => {
                         </button>
                     </p>
                 </div>
-            </div>
-        </section>
+        //     </div>
+        // </section>
     )
 }
 
