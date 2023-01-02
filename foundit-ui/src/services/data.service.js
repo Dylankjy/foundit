@@ -27,6 +27,18 @@ class DataSerivce {
 
         return response
     }
+
+    delete = async (endpoint, data) => {
+        let response
+        try {
+            response = await axios.delete(constants.REST_API_ENDPOINT + "/" + endpoint, data)
+        } catch (err) {
+            // TODO: Handle error
+            throw err
+        }
+
+        return response
+    }
 }
 
 export default new DataSerivce();
