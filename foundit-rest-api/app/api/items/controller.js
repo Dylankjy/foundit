@@ -37,7 +37,10 @@ router.post('/', (req, res) => {
     // #swagger.tags = ['Items']
     // #swagger.description = 'Add an item'
 
-    const { name, imgUrl, category } = req.body
+    const { name, imgBase64, category } = req.body
+
+    // TODO: This should be changed when used in AWS S3
+    const imgUrl = imgBase64
 
     if (!name || !imgUrl || !category) {
         // #swagger.responses[400] = { description: 'Missing required fields' }
