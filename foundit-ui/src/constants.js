@@ -8,7 +8,8 @@ const constants = {
         { id: 3, name: 'Stationary' },
         { id: 4, name: 'Wallets' },
         { id: 5, name: 'Smart devices' },
-        { id: 6, name: 'Bags' }
+        { id: 6, name: 'Bags' },
+        { id: 999, name: 'Other' },
     ]
 }
 

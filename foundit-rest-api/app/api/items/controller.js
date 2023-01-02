@@ -60,6 +60,38 @@ router.post('/', (req, res) => {
     return res.json(item)
 })
 
+router.post('/:id', async (req, res) => {
+    // #swagger.tags = ['Items']
+    // #swagger.description = 'Edit an item'
+
+    const { id } = req.params
+    const { name, imgBase64, category } = req.body
+
+    const imgUrl = imgBase64
+
+    if (!id || !name || !imgUrl || !category) {
+        // #swagger.responses[400] = { description: 'Missing required fields' }
+        return res.status(400).json({
+            'error': 'Missing required fields'
+        })
+    }
+
+    const item = await Item.findByIdAndUpdate(id, {
+        name,
+        imgUrl,
+        category
+    })
+
+    if (!item) {
+        // #swagger.responses[404] = { description: 'Item not found' }
+        return res.status(404).json({
+            'error': 'Item for edit not found'
+        })
+    }
+
+    return res.json(item)
+})
+
 router.delete('/:id', async (req, res) => {
     // #swagger.tags = ['Items']
     // #swagger.description = 'Add an item'

@@ -13,9 +13,10 @@ const ItemList = () => {
     const [onChange, setOnChange] = useState(false)
 
     const [showAddEditModal, setShowAddEditModal] = useState(false)
+    const [addEditModalData, setAddEditModalData] = useState(null)
 
     const [showDeleteModal, setShowDeleteModal] = useState(false)
-    const [deleteModalData, setDeleteModalData] = useState({})
+    const [deleteModalData, setDeleteModalData] = useState(null)
 
     const invokeUpdate = () => {
         setOnChange(!onChange)
@@ -31,6 +32,11 @@ const ItemList = () => {
         fetchItems().then(() => setLoading(false))
     }, [searchQuery, onChange])
 
+    const openAddEditModal = () => {
+        setAddEditModalData(null)
+        setShowAddEditModal(true)
+    }
+
     return (
         <>
             <section className="section">
@@ -39,7 +45,7 @@ const ItemList = () => {
                         {/* Left side */}
                         <div className="level-left">
                             <div className="level-item">
-                                <button onClick={setShowAddEditModal} className="button is-success">Add item</button>
+                                <button onClick={openAddEditModal} className="button is-success">Add item</button>
                             </div>
                         </div>
                         {/* Right side */}
@@ -58,14 +64,18 @@ const ItemList = () => {
                         </thead>
                         <tbody className={(loading) ? 'loading-fade' : ''}>
                             {items.map((item, i) => {
-                                return <ItemListEntry key={item._id} {...item} changeInvoker={invokeUpdate} modalSetter={setShowDeleteModal} modalDataSetter={setDeleteModalData} />
+                                return <ItemListEntry
+                                    key={item._id}
+                                    {...item}
+                                    changeInvoker={invokeUpdate}
+                                    modalSetter={{ delete: setShowDeleteModal, edit: setShowAddEditModal }}
+                                    modalDataSetter={{ delete: setDeleteModalData, edit: setAddEditModalData }} />
                             })}
                         </tbody>
                     </table>
                 </div>
             </section>
-            {showAddEditModal && <ItemModal visibilitySetter={setShowAddEditModal} changeInvoker={invokeUpdate} />}
-            {showDeleteModal && <ItemDeleteModal visibilitySetter={setShowDeleteModal} changeInvoker={invokeUpdate} itemName={deleteModalData.name} itemId={deleteModalData._id} />}
+            {showAddEditModal && <ItemModal visibilitySetter={setShowAddEditModal} changeInvoker={invokeUpdate} data={addEditModalData} key={addEditModalData} />}
             {showDeleteModal && <ItemDeleteModal visibilitySetter={setShowDeleteModal} changeInvoker={invokeUpdate} data={deleteModalData} />}
         </>
     )

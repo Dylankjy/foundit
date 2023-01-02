@@ -4,7 +4,7 @@ import dataService from '../../services/data.service';
 
 const ItemDeleteModal = (props) => {
     const { visibilitySetter, changeInvoker } = props;
-    const { name, _id } = props.data
+    const { name, _id } = props.data || {}
 
     const despawnModal = () => {
         visibilitySetter(false);

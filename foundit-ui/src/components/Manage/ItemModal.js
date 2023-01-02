@@ -1,9 +1,11 @@
-import { useFormik } from 'formik';
-import { useState } from 'react';
+import { Field, useFormik } from 'formik';
+import { useEffect, useState } from 'react';
+import constants from '../../constants';
 import dataService from '../../services/data.service';
 
 const ItemModal = (props) => {
     const { visibilitySetter, changeInvoker } = props;
+    const { name, category, imgBase64, _id } = props.data || {}
 
     const [fileName, setFileName] = useState(null);
 
@@ -27,25 +29,50 @@ const ItemModal = (props) => {
         })
     }
 
-    let formik = useFormik({
-        initialValues: {
-            name: '',
-            category: '',
-            imgBase64: '',
-        },
+    const formInitialValues = {
+        _id: '',
+        name: '',
+        category: '',
+        imgBase64: '',
+    }
+    const formik = useFormik({
+        initialValues: formInitialValues,
         onSubmit: (values, { resetForm }) => {
+            // If the item is being edited
+            if (props.data) {
+                dataService.post(`items/${_id}`, values).then(() => {
+                    resetForm()
+                    despawnModal()
+                }).catch((err) => {
+                    alert(err)
+                })
+                return
+            }
+
+            // If it's a new item being added
             dataService.post('items', values)
                 .then(() => {
                     resetForm()
                     despawnModal()
-                    changeInvoker()
                 })
         },
     });
 
     const despawnModal = () => {
-        visibilitySetter(false);
+        visibilitySetter(false)
+        changeInvoker()
     }
+
+    useEffect(() => {
+        if (props.data) {
+            // Set form data with existing item data
+            formik.setFieldValue("_id", _id);
+            formik.setFieldValue("name", name);
+            formik.setFieldValue("category", category);
+            formik.setFieldValue("imgBase64", imgBase64);
+            setFileName(<span className="has-text-grey-light"><i className="fa-solid fa-file-import"></i>&ensp;Replace current image</span>)
+        }
+    }, [])
 
     return (
         <div className="modal is-active">
@@ -53,8 +80,14 @@ const ItemModal = (props) => {
             <div className="modal-content">
                 <div className="card">
                     <div className="card-content">
-                        <p className="title">Add new item</p>
-                        <p className="subtitle">Editing '{null}'</p>
+                        {(!props.data) ?
+                            <p className="title">Add new item</p>
+                            :
+                            <>
+                                <p className="title">Edit item</p>
+                                <p className="subtitle">Editing '{name}'</p>
+                            </>
+                        }
                         <form onSubmit={formik.handleSubmit}>
                             <div className="field">
                                 <label className="label">Item Name</label>
@@ -64,27 +97,22 @@ const ItemModal = (props) => {
                                         <i className="fa-solid fa-book"></i>
                                     </span>
                                 </div>
-                                {/* <p className="help is-success">This username is available</p> */}
                             </div>
                             <div className="field">
                                 <label className="label">Category</label>
                                 <div className="control has-icons-left">
                                     <div className="select is-fullwidth">
-                                        <select name="category" onChange={formik.handleChange} value={formik.values.category}>
+                                        <select name="category" onChange={formik.handleChange} value={formik.values.category} defaultValue={category}>
                                             <option value={null}>Select a category</option>
-                                            <option value="books">Books</option>
-                                            <option value="stationary">Stationary</option>
-                                            <option value="wallets">Wallets</option>
-                                            <option value="devices">Smart devices</option>
-                                            <option value="bags">Bags</option>
-                                            <option value="other">Other</option>
+                                            {constants.itemCategories.map((itemCat) => {
+                                                return <option key={itemCat.id} value={itemCat.id}>{itemCat.name}</option>
+                                            })}
                                         </select>
                                     </div>
                                     <span className="icon is-small is-left">
                                         <i className="fa-solid fa-list-ul"></i>
                                     </span>
                                 </div>
-                                {/* <p className="help is-success">This username is available</p> */}
                             </div>
                             <div className="field">
                                 <label className="label">Picture of item</label>
@@ -102,12 +130,18 @@ const ItemModal = (props) => {
                                             </span>
                                             <span className="file-name">
                                                 <span>
-                                                    {fileName ? <p className='has-text-dark'>{fileName}</p> : <p className='has-text-grey-light'><i className="fa-solid fa-xmark"></i>&ensp;No file selected</p>}
+                                                    {
+                                                        fileName ?
+                                                            <p className='has-text-dark'>{fileName}</p>
+                                                            :
+                                                            <p className='has-text-grey-light'><i className="fa-solid fa-xmark"></i>&ensp;No file selected</p>
+                                                    }
                                                 </span>
                                             </span>
                                         </label>
                                     </div>
                                 </div>
+                                <p className="help">5MB maximum file size</p>
                             </div>
                             <div className="buttons mt-5">
                                 <button type='submit' className="button is-success"><i className="fa-solid fa-floppy-disk"></i>&ensp;Save</button>
