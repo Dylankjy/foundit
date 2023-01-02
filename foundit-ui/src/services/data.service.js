@@ -19,7 +19,7 @@ class DataSerivce {
     post = async (endpoint, data) => {
         let response
         try {
-            response = await axios.post(constants.REST_API_ENDPOINT + "/ " + endpoint, data)
+            response = await axios.post(constants.REST_API_ENDPOINT + "/" + endpoint, data)
         } catch (err) {
             // TODO: Handle error
             throw err
