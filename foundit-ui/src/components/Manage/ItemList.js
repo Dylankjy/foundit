@@ -12,7 +12,7 @@ const ItemList = () => {
     const [loading, setLoading] = useState(false)
     const [onChange, setOnChange] = useState(false)
 
-    const [showAddModal, setShowAddModal] = useState(false)
+    const [showAddEditModal, setShowAddEditModal] = useState(false)
 
     const [showDeleteModal, setShowDeleteModal] = useState(false)
     const [deleteModalData, setDeleteModalData] = useState({})
@@ -39,7 +39,7 @@ const ItemList = () => {
                         {/* Left side */}
                         <div className="level-left">
                             <div className="level-item">
-                                <button onClick={setShowAddModal} className="button is-success">Add item</button>
+                                <button onClick={setShowAddEditModal} className="button is-success">Add item</button>
                             </div>
                         </div>
                         {/* Right side */}
@@ -64,7 +64,7 @@ const ItemList = () => {
                     </table>
                 </div>
             </section>
-            {showAddModal && <ItemModal visibilitySetter={setShowAddModal} changeInvoker={invokeUpdate} />}
+            {showAddEditModal && <ItemModal visibilitySetter={setShowAddEditModal} changeInvoker={invokeUpdate} />}
             {showDeleteModal && <ItemDeleteModal visibilitySetter={setShowDeleteModal} changeInvoker={invokeUpdate} itemName={deleteModalData.name} itemId={deleteModalData._id} />}
         </>
     )
