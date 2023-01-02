@@ -76,6 +76,49 @@
       }
     },
     "/items/{id}": {
+      "post": {
+        "tags": [
+          "Items"
+        ],
+        "description": "Edit an item",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "example": "any"
+                },
+                "imgBase64": {
+                  "example": "any"
+                },
+                "category": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Missing required fields"
+          },
+          "404": {
+            "description": "Item not found"
+          }
+        }
+      },
       "delete": {
         "tags": [
           "Items"
