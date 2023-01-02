@@ -57,6 +57,31 @@ router.post('/', (req, res) => {
     return res.json(item)
 })
 
+router.delete('/:id', async (req, res) => {
+    // #swagger.tags = ['Items']
+    // #swagger.description = 'Add an item'
+
+    const { id } = req.params
+
+    if (!id) {
+        // #swagger.responses[400] = { description: 'Missing required fields' }
+        return res.status(400).json({
+            'error': 'Missing required fields'
+        })
+    }
+
+    const item = await Item.findByIdAndDelete(id)
+
+    if (!item) {
+        // #swagger.responses[404] = { description: 'Item not found' }
+        return res.status(404).json({
+            'error': 'Item for deletion not found'
+        })
+    }
+
+    return res.json('Item deleted')
+})
+
 router.get('/:id', async (req, res) => {
     // #swagger.tags = ['Items']
     // #swagger.description = 'Get an item by id'
