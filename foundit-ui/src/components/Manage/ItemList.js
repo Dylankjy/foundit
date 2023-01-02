@@ -66,6 +66,7 @@ const ItemList = () => {
             </section>
             {showAddEditModal && <ItemModal visibilitySetter={setShowAddEditModal} changeInvoker={invokeUpdate} />}
             {showDeleteModal && <ItemDeleteModal visibilitySetter={setShowDeleteModal} changeInvoker={invokeUpdate} itemName={deleteModalData.name} itemId={deleteModalData._id} />}
+            {showDeleteModal && <ItemDeleteModal visibilitySetter={setShowDeleteModal} changeInvoker={invokeUpdate} data={deleteModalData} />}
         </>
     )
 }
