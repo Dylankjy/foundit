@@ -1,8 +1,9 @@
 import { useFormik } from 'formik';
 import { useState } from 'react';
+import dataService from '../../services/data.service';
 
 const ItemModal = (props) => {
-    const { visibilitySetter } = props;
+    const { visibilitySetter, changeInvoker } = props;
 
     const [fileName, setFileName] = useState(null);
 
@@ -32,8 +33,13 @@ const ItemModal = (props) => {
             category: '',
             imgBase64: '',
         },
-        onSubmit: values => {
-            console.log(values)
+        onSubmit: (values, { resetForm }) => {
+            dataService.post('items', values)
+                .then(() => {
+                    resetForm()
+                    despawnModal()
+                    changeInvoker()
+                })
         },
     });
 
@@ -104,7 +110,7 @@ const ItemModal = (props) => {
                                 </div>
                             </div>
                             <div className="buttons mt-5">
-                                <button className="button is-success"><i className="fa-solid fa-floppy-disk"></i>&ensp;Save</button>
+                                <button type='submit' className="button is-success"><i className="fa-solid fa-floppy-disk"></i>&ensp;Save</button>
                                 <a className="button is-light" onClick={despawnModal}><i className="fa-solid fa-xmark"></i>&ensp;Cancel</a>
                             </div>
                         </form>
