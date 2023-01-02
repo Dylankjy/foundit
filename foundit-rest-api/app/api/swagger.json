@@ -55,7 +55,7 @@
                 "name": {
                   "example": "any"
                 },
-                "imgUrl": {
+                "imgBase64": {
                   "example": "any"
                 },
                 "category": {
@@ -76,6 +76,31 @@
       }
     },
     "/items/{id}": {
+      "delete": {
+        "tags": [
+          "Items"
+        ],
+        "description": "Add an item",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Missing required fields"
+          },
+          "404": {
+            "description": "Item not found"
+          }
+        }
+      },
       "get": {
         "tags": [
           "Items"
