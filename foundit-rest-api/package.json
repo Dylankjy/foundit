@@ -1,7 +1,7 @@
 {
-  "name": "template-express-rest-api",
+  "name": "foundit-rest-api",
   "version": "0.0.1",
-  "description": "Boilercode for REST API service on Node + Express",
+  "description": "Foundit REST API Service",
   "main": "app.js",
   "scripts": {
     "start": "node app",
@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/harbourfront/template-express-rest-api.git"
+    "url": "git+https://github.com/Dylankjy/foundit.git"
   },
   "keywords": [
     "nodejs",
@@ -20,9 +20,9 @@
   "author": "Dylan Kok <me@dylankjy.com>",
   "license": "UNLICENSED",
   "bugs": {
-    "url": "https://github.com/harbourfront/template-express-rest-api/issues"
+    "url": "https://github.com/Dylankjy/foundit/issues"
   },
-  "homepage": "https://github.com/harbourfront/template-express-rest-api#readme",
+  "homepage": "https://github.com/Dylankjy/foundit#readme",
   "dependencies": {
     "chalk": "^5.1.2",
     "cors": "^2.8.5",
