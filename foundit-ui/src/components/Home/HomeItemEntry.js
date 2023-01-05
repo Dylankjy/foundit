@@ -5,7 +5,7 @@ const HomeItemEntry = (props) => {
     const { imgUrl = 'https://bulma.io/images/placeholders/1280x960.png', name, createdAt, category } = props
 
     return (
-        <div className="column is-4">
+        <div className="column is-3">
             <div className="card">
                 <div className="card-image">
                     <figure className="image is-4by3">
