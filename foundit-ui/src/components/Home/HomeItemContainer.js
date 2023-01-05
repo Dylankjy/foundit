@@ -24,8 +24,10 @@ const HomeItemContainer = () => {
             setPage(0)
             setItems(response.data.items)
             setPreviousSearchQuery(searchQuery)
+            setHasMore(true)
         } else {
             setItems(items.concat(response.data.items))
+            setHasMore(true)
         }
 
         if (response.data.page === response.data.totalPages -1) {
@@ -55,6 +57,7 @@ const HomeItemContainer = () => {
                         </div>
                     </div>
                 </section>
+                {(items.length === 0 && !loading) && <NoResults />}
             </InfiniteScroll>
         </>
     )
