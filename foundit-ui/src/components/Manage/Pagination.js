@@ -4,8 +4,8 @@ const Pagination = (props) => {
 
     return (
         <nav className="pagination is-centered" role="navigation" aria-label="pagination">
-            { (page !== 0) && <a className="pagination-previous" onClick={() => setPage(page-1)}>Previous</a>}
-            { (page !== totalPages - 1) && <a className="pagination-next" onClick={() => setPage(page+1)}>Next page</a>}
+            { (page !== 0) && <a className="pagination-previous" onClick={() => setPage(page-1)}><i className="fa-solid fa-arrow-left"></i></a>}
+            { (page !== totalPages - 1) && <a className="pagination-next" onClick={() => setPage(page+1)}><i className="fa-solid fa-arrow-right"></i></a>}
             <ul className="pagination-list">
                 {
                     (page > 1) &&
