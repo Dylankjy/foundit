@@ -3,7 +3,6 @@ import dataService from "../../services/data.service"
 import HomeItemEntry from "./HomeItemEntry"
 import SearchBox from "./SearchBox"
 import InfiniteScroll from 'react-infinite-scroll-component';
-import NoMoreItems from "./NoMoreItems";
 import NoResults from "./NoResult";
 import EndMessage from "./EndMessage";
 
@@ -38,6 +37,7 @@ const HomeItemContainer = () => {
     useEffect(() => {
         setLoading(true)
         fetchItems().then(() => setLoading(false))
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [searchQuery, page])
 
     return (

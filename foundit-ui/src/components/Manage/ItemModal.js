@@ -1,4 +1,4 @@
-import { Field, useFormik } from 'formik';
+import { useFormik } from 'formik';
 import { useEffect, useState } from 'react';
 import constants from '../../constants';
 import dataService from '../../services/data.service';
@@ -72,6 +72,7 @@ const ItemModal = (props) => {
             formik.setFieldValue("imgBase64", imgBase64);
             setFileName(<span className="has-text-grey-light"><i className="fa-solid fa-file-import"></i>&ensp;Replace current image</span>)
         }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     return (
@@ -145,7 +146,7 @@ const ItemModal = (props) => {
                             </div>
                             <div className="buttons mt-5">
                                 <button type='submit' className="button is-success"><i className="fa-solid fa-floppy-disk"></i>&ensp;Save</button>
-                                <a className="button is-light" onClick={despawnModal}><i className="fa-solid fa-xmark"></i>&ensp;Cancel</a>
+                                <button type='button' className="button is-light" onClick={despawnModal}><i className="fa-solid fa-xmark"></i>&ensp;Cancel</button>
                             </div>
                         </form>
                     </div>

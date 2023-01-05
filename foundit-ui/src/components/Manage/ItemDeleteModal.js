@@ -1,5 +1,3 @@
-import { useFormik } from 'formik';
-import { useState } from 'react';
 import dataService from '../../services/data.service';
 
 const ItemDeleteModal = (props) => {

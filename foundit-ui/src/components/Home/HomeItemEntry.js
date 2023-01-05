@@ -19,10 +19,11 @@ const HomeItemEntry = (props) => {
                             {/* <p className="subtitle is-6">{itemDesc}</p> */}
                             <span className="tag is-dark">
                                 {
-                                    constants.itemCategories.map((item) => {
+                                    constants.itemCategories.map((item, i) => {
                                         if (item.id === category) {
                                             return item.name
                                         }
+                                        return 'Unknown Category'
                                     })
                                 }
                             </span>

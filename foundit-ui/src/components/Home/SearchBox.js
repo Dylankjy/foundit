@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react"
-import dataService from "../../services/data.service"
 
 const SearchBox = (props) => {
 
