@@ -9,9 +9,9 @@ router.get('/', async (req, res) => {
 
     // #swagger.parameters['page'] = { description: 'Page number' }
     // #swagger.parameters['search'] = { description: 'Search query' }
-    const { page, search } = req.query
+    const { page, search, limit=10 } = req.query
 
-    const itemsPerPage = 10
+    const itemsPerPage = limit
 
     // Check whether page is valid
     if (page && isNaN(page)) {

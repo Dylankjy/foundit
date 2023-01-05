@@ -10,7 +10,7 @@ const HomeItemContainer = () => {
     const [loading, setLoading] = useState(false)
 
     const fetchItems = async () => {
-        const response = await dataService.get(`items/?search=${searchQuery}`)
+        const response = await dataService.get(`items/?search=${searchQuery}&limit=12`)
         setItems(response.data.items)
     }
 
