@@ -4,10 +4,13 @@ import dataService from "../../services/data.service"
 import SearchBox from "../Home/SearchBox"
 import ItemListEntry from "./ItemListEntry"
 import ItemDeleteModal from "./ItemDeleteModal"
+import Pagination from "./Pagination"
 
 const ItemList = () => {
     const [items, setItems] = useState([])
     const [searchQuery, setSearchQuery] = useState("")
+    const [page, setPage] = useState(0)
+    const [totalPages, setTotalPages] = useState(0)
 
     const [loading, setLoading] = useState(false)
     const [onChange, setOnChange] = useState(false)
@@ -23,14 +26,15 @@ const ItemList = () => {
     }
 
     const fetchItems = async () => {
-        const response = await dataService.get(`items/?search=${searchQuery}`)
+        const response = await dataService.get(`items/?search=${searchQuery}&page=${page}`)
+        setTotalPages(response.data.totalPages)
         setItems(response.data.items)
     }
 
     useEffect(() => {
         setLoading(true)
         fetchItems().then(() => setLoading(false))
-    }, [searchQuery, onChange])
+    }, [searchQuery, onChange, page])
 
     const openAddEditModal = () => {
         setAddEditModalData(null)
@@ -73,6 +77,7 @@ const ItemList = () => {
                             })}
                         </tbody>
                     </table>
+                    <Pagination page={page} setPage={setPage} totalPages={totalPages} />
                 </div>
             </section>
             {showAddEditModal && <ItemModal visibilitySetter={setShowAddEditModal} changeInvoker={invokeUpdate} data={addEditModalData} key={addEditModalData} />}

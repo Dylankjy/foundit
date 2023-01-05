@@ -26,10 +26,15 @@ router.get('/', async (req, res) => {
         .skip(page * itemsPerPage)
         .limit(itemsPerPage)
 
+    // Get total item count
+    const totalItems = await Item.countDocuments(search ? { name: { $regex: search, $options: 'i' } } : {})
+    const totalPages = Math.ceil(totalItems / itemsPerPage)
+
     return res.json({
         items,
         total: items.length,
-        page: ((items.length > 0) ? parseInt(page) : 0) || 0
+        page: ((items.length > 0) ? parseInt(page) : 0) || 0,
+        totalPages: totalPages
     })
 })
 
