@@ -1,6 +1,6 @@
 {
   "name": "foundit-rest-api",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Foundit REST API Service",
   "main": "app.js",
   "scripts": {
@@ -19,7 +19,7 @@
     "boilerplate"
   ],
   "author": "Dylan Kok <me@dylankjy.com>",
-  "license": "UNLICENSED",
+  "license": "AGPL-3.0",
   "bugs": {
     "url": "https://github.com/Dylankjy/foundit/issues"
   },
