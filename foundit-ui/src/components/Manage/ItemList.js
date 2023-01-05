@@ -57,6 +57,7 @@ const ItemList = () => {
                             <div className="level-item"><SearchBox searchSetter={setSearchQuery} loadingSetter={setLoading} /></div>
                         </div>
                     </nav>
+                    <Pagination page={page} setPage={setPage} totalPages={totalPages} />
                     <table className="table is-fullwidth">
                         <thead>
                             <tr>
