@@ -2,7 +2,7 @@ const inspector = require('inspector')
 
 const config = {
     // Application
-    DEBUG_MODE: process.env.DEBUG_MODE || (inspector.url() !== undefined) ? true : false,
+    DEBUG_MODE: (process.env.DEBUG_MODE === 'true') ? true : false || (inspector.url() !== undefined) ? true : false,
 
     // Webserver
     HOSTNAME: process.env.HOSTNAME || 'localhost',
