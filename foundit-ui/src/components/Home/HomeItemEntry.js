@@ -21,7 +21,7 @@ const HomeItemEntry = (props) => {
                                 {
                                     // eslint-disable-next-line array-callback-return
                                     constants.itemCategories.map((item, i) => {
-                                        if (item.id !== category) {
+                                        if (item.id === category) {
                                             return item.name
                                         }
                                     })
