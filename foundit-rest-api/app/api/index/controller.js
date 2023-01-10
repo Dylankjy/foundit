@@ -14,7 +14,7 @@ router.get('/', (req, res) => {
 
 router.get('*', (req, res) => {
     // #swagger.ignore = true
-    return res.json({
+    return res.status(404).json({
         'code': 404,
         'name': 'Not Found',
         'message': 'The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.'
