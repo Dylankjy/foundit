@@ -30,6 +30,11 @@ app.use(cors({
 // Routes
 require('./app/api')(app)
 
+// When debug mode is enabled, print env
+if (env.DEBUG_MODE) {
+    console.log(env)
+}
+
 const webserver = () => {
     app.listen(env.PORT, (err) => {
         if (err) {
