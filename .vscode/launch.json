@@ -14,7 +14,8 @@
             "restart": true,
             "program": "${workspaceFolder}/foundit-rest-api/app.js",
             "runtimeExecutable": "nodemon",
-            "args": ["--inspect"]
+            "args": ["--inspect"],
+            "envFile": "${workspaceFolder}/foundit-rest-api/.env"
         }
     ]
 }
