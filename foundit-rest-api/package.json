@@ -6,8 +6,9 @@
   "scripts": {
     "start": "node app",
     "watch": "nodemon app",
-    "build:docker-image": "docker build . -t foundit:latest",
+    "build:docker-image": "docker build . -t foundit-rest-api:latest",
     "build:swagger": "node ./app/utils/swagger_generator.js",
+    "publish:docker-image": "publish_docker.cmd",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx --fix"
   },
   "repository": {
