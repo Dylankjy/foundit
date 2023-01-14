@@ -13,9 +13,18 @@ const config = {
     // Services and databases
     services: {
         MONGO: {
-            HOST: process.env.MONGO_HOST || 'mongodb://127.0.0.1:27017',
+            HOST: process.env.MONGO_HOST || '127.0.0.1:27017',
             DATABASE: process.env.MONGO_DATABASE || 'foundit',
-            OPTIONS: process.env.MONGO_OPTIONS || ''
+            OPTIONS: process.env.MONGO_OPTIONS || '',
+            AUTH: {
+                USER: process.env.MONGO_USER || '',
+                PASSWORD: process.env.MONGO_PASSWORD || ''
+            },
+            SSL: {
+                SSL_CA: process.env.MONGO_SSL_CA || '',
+                SSL_VALIDATE: (process.env.MONGO_SSL_VALIDATE === 'true') ? true : false,
+                USE_SSL: (process.env.MONGO_USE_SSL === 'true') ? true : false
+            }
         }
     },
 
