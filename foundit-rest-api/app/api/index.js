@@ -5,5 +5,5 @@ const BASE_URL = env.constants.API_BASE_URL
 
 module.exports = (app) => {
     app.use(`${BASE_URL}/items`, require('./items/controller'))
-    app.use(`${BASE_URL}/`, require('./index/controller'))
+    app.use('/', require('./index/controller'))
 }
