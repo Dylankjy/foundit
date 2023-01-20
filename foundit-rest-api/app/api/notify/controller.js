@@ -11,11 +11,11 @@ const sns = new AWS.SNS({
 })
 
 
-router.get('/', (req, res) => {
+router.post('/', (req, res) => {
     // #swagger.tags = ['Notify']
     // #swagger.description = 'Add email to AWS SNS topic'
 
-    const { email } = req.query
+    const { email } = req.body
 
     if (!email) {
         return res.status(400).json({
