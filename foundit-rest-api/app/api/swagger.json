@@ -176,16 +176,23 @@
       }
     },
     "/notify/": {
-      "get": {
+      "post": {
         "tags": [
           "Notify"
         ],
         "description": "Add email to AWS SNS topic",
         "parameters": [
           {
-            "name": "email",
-            "in": "query",
-            "type": "string"
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "email": {
+                  "example": "any"
+                }
+              }
+            }
           }
         ],
         "responses": {
