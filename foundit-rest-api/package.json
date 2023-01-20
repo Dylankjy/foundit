@@ -26,6 +26,7 @@
   },
   "homepage": "https://github.com/Dylankjy/foundit#readme",
   "dependencies": {
+    "aws-sdk": "^2.1298.0",
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "express-mongo-sanitize": "^2.2.0",
