@@ -25,6 +25,14 @@ const config = {
                 SSL_VALIDATE: (process.env.MONGO_SSL_VALIDATE === 'true') ? true : false,
                 USE_SSL: (process.env.MONGO_USE_SSL === 'true') ? true : false
             }
+        },
+        AWS: {
+            ACCESS_KEY_ID: process.env.AWS_ACCESS_KEY_ID || '',
+            SECRET_ACCESS_KEY: process.env.AWS_SECRET_ACCESS || '',
+            REGION: process.env.AWS_REGION || 'ap-southeast-1',
+            SNS: {
+                TOPIC_ARN: process.env.AWS_SNS_TOPIC_ARN || ''
+            }
         }
     },
 
