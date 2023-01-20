@@ -3,6 +3,15 @@ const router = express.Router()
 
 const Item = require('../../models/item')
 
+const env = require('../../config')
+
+const AWS = require('aws-sdk')
+const sns = new AWS.SNS({
+    accessKeyId: env.services.AWS.ACCESS_KEY_ID,
+    secretAccessKey: env.services.AWS.SECRET_ACCESS_KEY,
+    region: env.services.AWS.REGION
+})
+
 router.get('/', async (req, res) => {
     // #swagger.tags = ['Items']
     // #swagger.description = 'Get all items'
@@ -61,6 +70,23 @@ router.post('/', (req, res) => {
     })
 
     item.save()
+
+    // SNS publish new message in html
+    const currentHumanReadableTime = new Date().toLocaleString()
+    const messageBody = `A new item has been added to Foundit.
+Item name: ${name}
+Category: ${category}
+Timestamp added: ${currentHumanReadableTime}`
+    const params = {
+        Message: messageBody,
+        Subject: 'New item added to Foundit - ' + name,
+        TopicArn: env.services.AWS.SNS.TOPIC_ARN
+    }
+
+    sns.publish(params, (err, data) => {
+        if (err) console.err(err)
+        else console.log(data)
+    })
 
     return res.json(item)
 })
