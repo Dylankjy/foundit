@@ -17,6 +17,7 @@ app.use(rateLimit({
 // Swagger
 const swaggerUi = require('swagger-ui-express')
 const swaggerFile = require('./app/api/swagger.json')
+app.use(`/docs`, swaggerUi.serve, swaggerUi.setup(swaggerFile))
 
 // Database
 require('./app/utils/database')
@@ -42,9 +43,6 @@ const webserver = () => {
         }
         console.log(`Started: Webserver binded on port ${env.PORT}`)
     })
-
-    // Swagger API Docs
-    app.use(`/docs`, swaggerUi.serve, swaggerUi.setup(swaggerFile))
 }
 
 webserver()
