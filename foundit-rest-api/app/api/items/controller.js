@@ -71,7 +71,7 @@ router.post('/', (req, res) => {
 
     item.save()
 
-    // SNS publish new message in html
+    // SNS publish new message
     const currentHumanReadableTime = new Date().toLocaleString()
     const messageBody = `A new item has been added to Foundit.
 Item name: ${name}
