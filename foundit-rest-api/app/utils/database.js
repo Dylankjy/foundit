@@ -9,12 +9,16 @@ class Database {
     }
 
     _connect() {
-        mongoose.connect(`mongodb://${env.services.MONGO.AUTH.USER}:${env.services.MONGO.AUTH.PASSWORD}@${env.services.MONGO.HOST}/${env.services.MONGO.DATABASE}${env.services.MONGO.OPTIONS}`, {
-            useNewUrlParser: true,
-            ssl: env.services.MONGO.SSL.USE_SSL,
-            sslValidate: env.services.MONGO.SSL.SSL_VALIDATE,
-            sslCA: path.join(__dirname, env.services.MONGO.SSL.SSL_CA)
-        })
+        mongoose.connect(
+            (env.services.MONGO.AUTH.USER !== '') ?
+                `mongodb://${env.services.MONGO.AUTH.USER}:${env.services.MONGO.AUTH.PASSWORD}@${env.services.MONGO.HOST}/${env.services.MONGO.DATABASE}${env.services.MONGO.OPTIONS}` :
+                `mongodb://${env.services.MONGO.HOST}/${env.services.MONGO.DATABASE}${env.services.MONGO.OPTIONS}`
+            , {
+                useNewUrlParser: true,
+                ssl: env.services.MONGO.SSL.USE_SSL,
+                sslValidate: (env.services.MONGO.SSL.USE_SSL) ? env.services.MONGO.SSL.SSL_VALIDATE : undefined,
+                sslCA: (env.services.MONGO.SSL.USE_SSL) ? path.join(__dirname, env.services.MONGO.SSL.SSL_CA) : undefined
+            })
             .then(() => {
                 console.log('Database connection successful')
             })
