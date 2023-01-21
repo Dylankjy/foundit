@@ -30,3 +30,5 @@ Code in this repository is licensed under GNU AGPL-3.0. A copy may be found in t
 
 ##### Plagarism
 If you are using this for a school assignment, you are hereby warned, above the warning given by your educational institute, that it constitutes as plagarism if you choose to pass my handwork as your own. Don't be an ass, if I can spend time writing this, you can as well.
+
+Copyright © 2023, Dylan Kok \<me@dylankjy.com\>
